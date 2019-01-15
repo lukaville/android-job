@@ -114,13 +114,13 @@ afterEvaluate { project ->
     }
 
     signing {
-        required { gradle.taskGraph.hasTask("uploadArchives") }
+        required { false }
         sign configurations.archives
     }
 }
 
 project.tasks.whenTaskAdded { task ->
-    if (task.name == 'signArchives') {
+    if (task.name == 'uploadArchives') {
         this.addSourcesAndJavadocTask task
     }
 }
